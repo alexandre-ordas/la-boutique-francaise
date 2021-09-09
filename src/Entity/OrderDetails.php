@@ -45,6 +45,23 @@ class OrderDetails
      */
     private $total;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=OrderDetails::class, inversedBy="orderDetails")
+     */
+    private $my_product;
+
+    /**
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="my_product")
+     */
+    private $orderDetails;
+
+
+    public function __construct()
+    {
+        $this->orderDetails = new ArrayCollection();
+    }
+
+
 
     public function __toString()
     {
@@ -116,27 +133,6 @@ class OrderDetails
         return $this;
     }
 
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProductId(): Collection
-    {
-        return $this->product_id;
-    }
 
-    public function addProductId(Product $productId): self
-    {
-        if (!$this->product_id->contains($productId)) {
-            $this->product_id[] = $productId;
-        }
 
-        return $this;
-    }
-
-    public function removeProductId(Product $productId): self
-    {
-        $this->product_id->removeElement($productId);
-
-        return $this;
-    }
 }

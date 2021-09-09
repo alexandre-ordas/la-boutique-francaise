@@ -59,6 +59,13 @@ class Product
      * @ORM\Column(type="boolean")
      */
     private $isBest;
+
+
+    public function __construct()
+    {
+        $this->orderDetails = new ArrayCollection();
+        $this->orderItems = new ArrayCollection();
+    }
     
 
     public function getId(): ?int
@@ -162,30 +169,6 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection|OrderDetails[]
-     */
-    public function getOrderDetaitlsId(): Collection
-    {
-        return $this->order_detaitls_id;
-    }
 
-    public function addOrderDetaitlsId(OrderDetails $orderDetaitlsId): self
-    {
-        if (!$this->order_detaitls_id->contains($orderDetaitlsId)) {
-            $this->order_detaitls_id[] = $orderDetaitlsId;
-            $orderDetaitlsId->addProductId($this);
-        }
 
-        return $this;
-    }
-
-    public function removeOrderDetaitlsId(OrderDetails $orderDetaitlsId): self
-    {
-        if ($this->order_detaitls_id->removeElement($orderDetaitlsId)) {
-            $orderDetaitlsId->removeProductId($this);
-        }
-
-        return $this;
-    }
 }
