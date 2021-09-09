@@ -60,6 +60,11 @@ class Product
      */
     private $isBest;
 
+    /**
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="my_product")
+     */
+    private $orderDetails;
+
 
     public function __construct()
     {
@@ -165,6 +170,36 @@ class Product
     public function setIsBest(bool $isBest): self
     {
         $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OrderDetails[]
+     */
+    public function getOrderDetails(): Collection
+    {
+        return $this->orderDetails;
+    }
+
+    public function addOrderDetail(OrderDetails $orderDetail): self
+    {
+        if (!$this->orderDetails->contains($orderDetail)) {
+            $this->orderDetails[] = $orderDetail;
+            $orderDetail->setMyProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderDetail(OrderDetails $orderDetail): self
+    {
+        if ($this->orderDetails->removeElement($orderDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($orderDetail->getMyProduct() === $this) {
+                $orderDetail->setMyProduct(null);
+            }
+        }
 
         return $this;
     }

@@ -90,7 +90,7 @@ class OrderController extends AbstractController
             foreach ($cart->getFull() as $product){
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
-                $orderDetails->setProduct($product['product']->getName());
+                $orderDetails->setMyProduct($product['product']);
                 $orderDetails->setPrice($product['product']->getPrice());
                 $orderDetails->setQuantity($product['quantity']);
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);

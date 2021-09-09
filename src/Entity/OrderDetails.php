@@ -25,10 +25,6 @@ class OrderDetails
      */
     private $myOrder;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $product;
 
     /**
      * @ORM\Column(type="integer")
@@ -46,21 +42,15 @@ class OrderDetails
     private $total;
 
     /**
-     * @ORM\ManyToOne(targetEntity=OrderDetails::class, inversedBy="orderDetails")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="orderDetails")
      */
     private $my_product;
-
-    /**
-     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="my_product")
-     */
-    private $orderDetails;
 
 
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
     }
-
 
 
     public function __toString()
@@ -85,17 +75,6 @@ class OrderDetails
         return $this;
     }
 
-    public function getProduct(): ?string
-    {
-        return $this->product;
-    }
-
-    public function setProduct(string $product): self
-    {
-        $this->product = $product;
-
-        return $this;
-    }
 
     public function getQuantity(): ?int
     {
@@ -129,6 +108,18 @@ class OrderDetails
     public function setTotal(float $total): self
     {
         $this->total = $total;
+
+        return $this;
+    }
+
+    public function getMyProduct(): ?Product
+    {
+        return $this->my_product;
+    }
+
+    public function setMyProduct(?Product $my_product): self
+    {
+        $this->my_product = $my_product;
 
         return $this;
     }
