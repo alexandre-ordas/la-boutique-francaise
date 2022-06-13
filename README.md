@@ -1,24 +1,23 @@
-# la-boutique-francaise
-Boutique en ligne 
+# Welcome to La Boutique Française
 
-Projet pour valider mon Titre Professionnel de Concepteur et Développeur d'Applications
+Project in order to validate my bachelor degree Concepteur et Développeur d'Application
 
+Objetif : Make a e-commerce website with some obligations :
 
-Crée une boutique en ligne avec pour contraintes :
+- Create an user profil
+- Create an administor interface (EasyAdmin)
+- Manage Data with a Database (MySQL)
+- Use an API
 
-
---- Gérer la gestion du panier
-
-
---- Gérer la gestion du paiement (API Stripe)
-
-
---- Crée un espace utilisateur
+## Screenshots
+<img src="" height="600">
 
 
---- Gérer l'espace des commandes avec l'espace administateur (EasyAdmin)
+## Technical environment
+- HTML 5, CSS 3 => Bootstrap
+- PHP 7.2
+- Symfony 4
 
 
---- Gérer la sécurité lors du trafic sur le site
-
-Dans ce projet je démontre comment j'ai fait pour effectuer ses tâches.
+## Authors
+- [Alexandre Ordas](https://github.com/alexandre-ordas) - La boutique française
